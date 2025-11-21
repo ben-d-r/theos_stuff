@@ -46,7 +46,8 @@
 <body>
     <h1>Theo's Museum</h1>
     <p>This website has photos of my cool collections that I've never been able to show... but now I can!</p>
-    <div class="gallery" id="gallery"></div>
+    
+<div class="gallery" id="gallery"></div>
 
 <script>
     fetch('images.csv')
@@ -88,40 +89,8 @@
             });
         });
 </script>
-    <!--
-    <div class="gallery">
-        <div>
-            <img src="images/ammonite.jpeg" alt="Ammonite Fossil">
-            <p>Ammonite Fossil</p>
-        </div>
-        <div>
-            <img src="images/charizard.jpeg" alt="charizard GX card ">
-            <p>charizard GX card</p>
-        </div>
-        <div>
-            <img src="images/deoxys.jpeg" alt="deoxys card GOLDEN">
-            <p>deoxys card GOLDEN</p>
-        </div>
-        <div>
-            <img src="images/emerald.jpeg" alt="Emerald">
-            <p>Emerald</p>
-        </div>
-        <div>
-            <img src="images/mewtwo.jpeg" alt="Mewtwo EX card">
-            <p>Mewtwo EX card</p>
-        </div>
-        <div>
-            <img src="images/simisear.jpeg" alt="simisear card">
-            <p>simisear card</p>
-        </div>
-        <div>
-            <img src="images/wo-chien.jpeg" alt="wo-chiencard">
-            <p>wo-chiencard</p>
-        </div>
-        -->
-        <!-- Add more images here -->
-    </div>
-    <script>
+
+<script>
     const images = document.querySelectorAll('.gallery img');
     
     images.forEach(img => {
