@@ -16,37 +16,31 @@
         h1 {
             text-align: center;
         }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        .gallery > div {
-            background: white;
-            border-radius: 8px;
-            padding: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .gallery img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-        .gallery p {
-            margin: 10px 0 0 0;
-            text-align: center;
-        }
-        .gallery img:hover {
-            transform: scale(1.05);
-            transition: transform 0.2s;
-        }
         .category-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
             margin-bottom: 40px;
+        }
+        .category-gallery > div {
+            background: white;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .category-gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .category-gallery img:hover {
+            transform: scale(1.05);
+            transition: transform 0.2s;
+        }
+        .category-gallery p {
+            margin: 10px 0 0 0;
+            text-align: center;
         }
         h2 {
             margin-top: 40px;
@@ -119,27 +113,6 @@
                 }
             });
         });
-</script>
-
-<script>
-    const images = document.querySelectorAll('.gallery img');
-    
-    images.forEach(img => {
-        img.style.cursor = 'pointer';
-        img.addEventListener('click', function() {
-            const overlay = document.createElement('div');
-            overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;z-index:1000;cursor:pointer;';
-            
-            const fullImg = document.createElement('img');
-            fullImg.src = this.src;
-            fullImg.style.cssText = 'max-width:90%;max-height:90%;object-fit:contain;';
-            
-            overlay.appendChild(fullImg);
-            document.body.appendChild(overlay);
-            
-            overlay.addEventListener('click', () => overlay.remove());
-        });
-    });
 </script>
 </body>
 </html>
