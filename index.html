@@ -10,8 +10,39 @@
             font-family: Arial, sans-serif;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0;
             background-color: #f5f5f5;
+        }
+        nav {
+            background-color: #333;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav li {
+            margin: 0;
+        }
+        nav a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        nav a.active {
+            background-color: #555;
+        }
+        .content {
+            padding: 20px;
         }
         h1 {
             text-align: center;
@@ -50,10 +81,18 @@
     </style>
 </head>
 <body>
-    <h1>Theo's Museum</h1>
-    <p>This website has photos of my cool collections that I've never been able to show... but now I can!</p>
-    
-<div>
+    <nav>
+        <ul>
+            <li><a href="index.html" class="active">Collectibles</a></li>
+            <li><a href="minecraft.html">Minecraft Worlds</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h1>Theo's Museum</h1>
+        <p>This website has photos of my cool collections that I've never been able to show... but now I can!</p>
+
+    <div>
     <h2>SHELLS</h2>
     <div id="shells" class="category-gallery"></div>
     
@@ -74,7 +113,9 @@
 
      <h2>OTHER</h2>
     <div id="other" class="category-gallery"></div>
-</div>
+    </div>
+
+    </div>
 
 <script>
     fetch('images.csv')
