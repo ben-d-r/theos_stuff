@@ -12,7 +12,8 @@ A personal website for Theo to showcase his collections and Minecraft worlds.
 
 - **Static HTML/CSS/JS** - No frameworks, vanilla implementation
 - **GitHub Pages** - Hosting with custom domain (CNAME configured)
-- **CSV data files** - Content managed through simple CSV format
+- **JSON data files** - Content stored in `data/` folder
+- **Decap CMS** - Admin interface at `/admin` for content management
 
 ## File Structure
 
@@ -21,10 +22,13 @@ theos_stuff/
 ├── index.html              # Main collectibles page ("Theo's Museum")
 ├── pokemon.html            # Pokemon cards gallery
 ├── minecraft.html          # Minecraft screenshots gallery
-├── admin.html              # Content management tool (gitignored)
-├── images.csv              # Collectibles metadata (filename,description,category)
-├── pokemon.csv             # Pokemon cards metadata (filename,description)
-├── minecraft-screenshots.csv  # Minecraft screenshots metadata
+├── admin/
+│   ├── index.html          # Decap CMS admin interface
+│   └── config.yml          # CMS configuration
+├── data/
+│   ├── collectibles.json   # Collectibles metadata
+│   ├── pokemon.json        # Pokemon cards metadata
+│   └── minecraft.json      # Minecraft screenshots metadata
 ├── images/                 # Collectibles photos (~40 files)
 ├── pokemon/                # Pokemon card photos (~5 files)
 ├── minecraft/              # Minecraft screenshots (~33 files)
@@ -48,34 +52,29 @@ Gallery of Pokemon cards.
 ### minecraft.html - Minecraft Worlds
 Gallery of Minecraft world screenshots.
 
-### admin.html - Content Management
-A browser-based tool for adding new items:
-1. Upload existing CSV
-2. Add new image + description + category
-3. Download updated files
-4. Manually commit to GitHub
-
-This file is in .gitignore and not deployed.
+### /admin - Decap CMS
+Visual content management interface. Allows adding/editing items with image upload.
 
 ## How Content Works
 
-1. CSV files store metadata: `filename,description,category`
-2. JavaScript fetches CSV at page load
+1. JSON files in `data/` store metadata: `{items: [{filename, description, category}, ...]}`
+2. JavaScript fetches JSON at page load
 3. Images are dynamically rendered into category grids
 4. Click any image to view enlarged in overlay
 
 ## Adding New Items
 
-**Via admin.html (local workflow):**
-1. Open admin.html locally in browser
-2. Load current CSV, add new item details
-3. Download renamed image and updated CSV
-4. Add files to repo and commit
+**Via Decap CMS (recommended):**
+1. Go to www.theosstuff.ca/admin
+2. Log in with GitHub
+3. Select collection (Collectibles, Pokemon, or Minecraft)
+4. Add new item with image upload
+5. Save and publish
 
 **Direct edit:**
-1. Add image to `images/` folder
-2. Add row to `images.csv`: `filename.jpeg,Description here,Category`
-3. Category must match: Shells, Minerals, Fossils, Pokemon, Books, Lego, or Other
+1. Add image to appropriate folder (`images/`, `pokemon/`, or `minecraft/`)
+2. Edit JSON file in `data/` folder
+3. Commit and push
 
 ## Style Notes
 
@@ -89,3 +88,9 @@ This file is in .gitignore and not deployed.
 ## Favicon
 
 Uses `images/ammonite.jpeg` as the site favicon.
+
+## Decap CMS Authentication
+
+The CMS uses GitHub OAuth for authentication. To set this up, you need an OAuth authenticator. Options:
+1. **Netlify hosting** (easiest) - Move site to Netlify, free and seamless
+2. **External OAuth** - Use a service like `netlify-cms-oauth-provider-go` on a free host

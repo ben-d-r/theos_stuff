@@ -81,6 +81,17 @@
     </style>
 </head>
 <body>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
     <nav>
         <ul>
             <li><a href="index.html" class="active">Collectibles</a></li>
@@ -119,43 +130,39 @@
     </div>
 
 <script>
-    fetch('images.csv')
-        .then(response => response.text())
+    fetch('data/collectibles.json')
+        .then(response => response.json())
         .then(data => {
-            const lines = data.trim().split('\n');
-            
-            lines.forEach(line => {
-                const [filename, description, category] = line.split(',');
-                
-                const categoryId = category.trim().toLowerCase().replace(/\s+/g, '');
+            data.items.forEach(item => {
+                const categoryId = item.category.toLowerCase().replace(/\s+/g, '');
                 const container = document.getElementById(categoryId);
-                
+
                 if (container) {
                     const div = document.createElement('div');
                     const img = document.createElement('img');
-                    img.src = `images/${filename.trim()}`;
-                    img.alt = description.trim();
+                    img.src = `images/${item.filename}`;
+                    img.alt = item.description;
                     img.style.cursor = 'pointer';
-                    
+
                     const p = document.createElement('p');
-                    p.textContent = description.trim();
-                    
+                    p.textContent = item.description;
+
                     div.appendChild(img);
                     div.appendChild(p);
                     container.appendChild(div);
-                    
+
                     // Click to enlarge
                     img.addEventListener('click', function() {
                         const overlay = document.createElement('div');
                         overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;z-index:1000;cursor:pointer;';
-                        
+
                         const fullImg = document.createElement('img');
                         fullImg.src = this.src;
                         fullImg.style.cssText = 'max-width:90%;max-height:90%;object-fit:contain;';
-                        
+
                         overlay.appendChild(fullImg);
                         document.body.appendChild(overlay);
-                        
+
                         overlay.addEventListener('click', () => overlay.remove());
                     });
                 }

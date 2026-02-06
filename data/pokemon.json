@@ -1,0 +1,15 @@
+{
+  "items": [
+    {"filename": "charizard.jpeg", "description": "Charizard GX card"},
+    {"filename": "deoxys.jpeg", "description": "Deoxys card GOLDEN"},
+    {"filename": "mewtwo.jpeg", "description": "Mewtwo EX card"},
+    {"filename": "simisear.jpeg", "description": "Simisear card"},
+    {"filename": "wo-chien.jpeg", "description": "Wo-Chien card"},
+    {"filename": "mewtwo2.jpeg", "description": "Mewtwo"},
+    {"filename": "urshifu.jpeg", "description": "Urshifu Vmax"},
+    {"filename": "battle.jpeg", "description": "Pokemon battle game"},
+    {"filename": "stack1.jpeg", "description": "Stack of cards"},
+    {"filename": "stack2.jpeg", "description": "Stack of cards"},
+    {"filename": "stack3.jpeg", "description": "Stack of cards"}
+  ]
+}

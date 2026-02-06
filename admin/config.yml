@@ -1,0 +1,52 @@
+backend:
+  name: github
+  repo: ben-d-r/theos_stuff
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "collectibles"
+    label: "Collectibles"
+    file: "data/collectibles.json"
+    description: "Manage your collectibles (shells, minerals, fossils, books, lego, other)"
+    format: "json"
+    fields:
+      - name: "items"
+        label: "Items"
+        widget: "list"
+        fields:
+          - {label: "Image", name: "filename", widget: "image", media_folder: "/images", public_folder: ""}
+          - {label: "Description", name: "description", widget: "string"}
+          - {label: "Category", name: "category", widget: "select", options: ["Shells", "Minerals", "Fossils", "Books", "Lego", "Other"]}
+
+  - name: "pokemon"
+    label: "Pokemon Cards"
+    file: "data/pokemon.json"
+    description: "Manage your Pokemon card collection"
+    format: "json"
+    media_folder: "pokemon"
+    public_folder: "/pokemon"
+    fields:
+      - name: "items"
+        label: "Cards"
+        widget: "list"
+        fields:
+          - {label: "Image", name: "filename", widget: "image", media_folder: "/pokemon", public_folder: ""}
+          - {label: "Description", name: "description", widget: "string"}
+
+  - name: "minecraft"
+    label: "Minecraft Screenshots"
+    file: "data/minecraft.json"
+    description: "Manage your Minecraft world screenshots"
+    format: "json"
+    media_folder: "minecraft"
+    public_folder: "/minecraft"
+    fields:
+      - name: "items"
+        label: "Screenshots"
+        widget: "list"
+        fields:
+          - {label: "Image", name: "filename", widget: "image", media_folder: "/minecraft", public_folder: ""}
+          - {label: "Description", name: "description", widget: "string"}

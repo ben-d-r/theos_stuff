@@ -92,23 +92,20 @@
     </div>
 
 <script>
-    fetch('minecraft-screenshots.csv')
-        .then(response => response.text())
+    fetch('data/minecraft.json')
+        .then(response => response.json())
         .then(data => {
-            const lines = data.trim().split('\n');
             const container = document.getElementById('minecraft-gallery');
 
-            lines.forEach(line => {
-                const [filename, description] = line.split(',');
-
+            data.items.forEach(item => {
                 const div = document.createElement('div');
                 const img = document.createElement('img');
-                img.src = `minecraft/${filename.trim()}`;
-                img.alt = description.trim();
+                img.src = `minecraft/${item.filename}`;
+                img.alt = item.description;
                 img.style.cursor = 'pointer';
 
                 const p = document.createElement('p');
-                p.textContent = description.trim();
+                p.textContent = item.description;
 
                 div.appendChild(img);
                 div.appendChild(p);
